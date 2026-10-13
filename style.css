@@ -1,0 +1,485 @@
+:root {
+    --bg: #0a0217;
+    --card: #10081d;
+    --primary: #6C5CE7;
+    --primary-light: #A29BFE;
+    --secondary: #00CEC9;
+    --text-main: #FFFFFF;
+    --text-light: #5a4c65;
+    --border: #342840;
+    --card1: #130c1f;
+    --active: #3e1777;
+    --danger: #FF7675;
+    --warning: #FDCB6E;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    padding: 1.5rem 0rem;
+    background-color: #0f001c;
+}
+
+
+.auth-section {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #0f001c;
+}
+
+
+.login-auth-wrapper {
+    width: 35%;
+    min-height: 95vh;
+
+    padding: 1rem 2rem;
+
+    border: 1px solid #3c0668;
+
+    box-shadow: 2px 4px 100px #330459;
+
+    border-radius: 1rem;
+
+    background-color: #150026;
+}
+
+
+.hide-login {
+    display: none;
+}
+
+.logo-wrapper {
+    height: 11vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.logo-div {
+    width: 20%;
+    height: 9vh;
+}
+
+
+.site-name-wrapper {
+    width: 40%;
+    height: 12vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 0.4rem;
+}
+
+
+.site-name-wrapper h2 {
+    color: whitesmoke;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 1.2rem;
+}
+
+
+.site-name-wrapper p {
+    color: #8d05fc;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 0.8rem;
+
+    text-transform: uppercase;
+}
+
+.welcome-wrapper {
+    height: 12vh;
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.welcome-wrapper h2 {
+    color: whitesmoke;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 1.3rem;
+
+    margin-top: 0.5rem;
+}
+
+
+.welcome-wrapper p {
+    color: #7e6d8b;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 1rem;
+}
+
+.login-form,
+.sign-up-form {
+    width: 100%;
+}
+
+
+.login-form {
+    min-height: 46vh;
+}
+
+
+.sign-up-form {
+    min-height: 60vh;
+
+    border-radius: 0.7rem;
+
+    margin-top: 0.3rem;
+
+    padding: 0rem 1rem;
+
+    color: white;
+
+    margin-bottom: 0.2rem;
+}
+
+
+.login-form label,
+.sign-up-form label {
+    color: #7e6d8b;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 1.1rem;
+}
+
+.input-wrapper {
+    height: 8vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 0.7rem;
+
+    border: 1px solid #3c0668;
+
+    margin-top: 0.4rem;
+
+    background-color: #11011f;
+
+    padding: 0rem 1rem;
+
+    color: white;
+
+    outline: none;
+}
+
+
+.input-wrapper>i {
+    color: #7e6d8b;
+
+    font-size: 1.2rem;
+}
+
+
+input {
+    height: 7vh;
+    width: 100%;
+
+    background: transparent;
+
+    padding: 0rem 1rem;
+
+    border: none;
+
+    color: white;
+
+    outline: none;
+}
+
+
+.login-form input::placeholder,
+.sign-up-form input::placeholder {
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+}
+
+.login-form button,
+.sign-up-form button {
+    width: 100%;
+    height: 8vh;
+
+    border-radius: 0.7rem;
+
+    border: none;
+
+    font-size: 1.1rem;
+
+    color: white;
+
+    background-color: #8d05fc;
+
+    box-shadow: 2px 1px 4px #8d05fc;
+
+    cursor: pointer;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    text-align: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.login-form button:hover,
+.login-form button:active,
+.sign-up-form button:hover,
+.sign-up-form button:active {
+    background-color: #a84bf5;
+
+    box-shadow: inset 2px 1px 0px #8d05fc;
+}
+
+
+.sign-up-btn,
+.login-btn {
+    width: 100%;
+    height: 8vh;
+
+    border-radius: 0.7rem;
+
+    font-size: 1.1rem;
+
+    color: grey;
+
+    background-color: #11011f;
+
+    border: 1px solid #3c0668;
+
+    cursor: pointer;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    text-align: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.sign-up-btn:hover,
+.sign-up-btn:active,
+.login-btn:hover,
+.login-btn:active {
+    background-color: #8d05fc;
+
+    color: white;
+}
+
+.sign-up-auth-wrapper {
+    width: 35%;
+
+    min-height: 95vh;
+
+    padding: 1rem 2rem;
+
+    border: 1px solid #3c0668;
+
+    box-shadow: 2px 4px 100px #330459;
+
+    border-radius: 1rem;
+
+    background-color: #150026;
+
+    display: none;
+}
+
+
+.show-sign-up {
+    display: block;
+}
+
+.login-form+p,
+.sign-up-form+p {
+    color: #7e6d8b;
+
+    font-size: 1.2rem;
+
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    text-align: center;
+}
+
+.password-toggle {
+    cursor: pointer;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid lightgray;
+    border-top: 3px solid gray;
+    border-radius: 50%;
+    display: none;
+    animation: spin linear 700ms infinite;
+}
+
+.show-loader {
+    display: block;
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.email-message,
+.password-strength,
+.signup-name-message,
+.login-email-message,
+.login-password-message {
+    display: block;
+    font-family:
+        'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+
+    font-size: 0.9rem;
+
+    margin-top: 0.3rem;
+}
+
+.password-weak,
+.email-error-message {
+    color: var(--danger);
+}
+
+
+.password-medium {
+    color: var(--warning);
+}
+
+
+.password-strong {
+    color: var(--secondary);
+}
+
+.error {
+    border: 1px solid var(--danger);
+    animation: swing 800ms ease-in-out;
+}
+
+
+@keyframes swing {
+
+    20% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .login-auth-wrapper,
+    .sign-up-auth-wrapper {
+        width: 55%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 1rem;
+    }
+
+    .login-auth-wrapper,
+    .sign-up-auth-wrapper {
+        width: 100%;
+    }
+
+}
