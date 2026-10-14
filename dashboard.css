@@ -221,11 +221,11 @@ aside {
 .logo-wrapper .logo-div {
     width: 30%;
     height: 10vh;
-    border: 2px solid white;
 }
-
-
-
+.logo-wrapper .logo-div img{
+    height: 100%;
+    width: 100%;
+}
 .site-name-wrapper {
     width: 70%;
 }
@@ -366,7 +366,8 @@ aside {
 section.content {
     display: none;
     margin-left: 19.7%;
-    padding: 1rem;
+    width: 79.3%;
+    padding: 1rem 2rem;
 }
 
 section.content.active {
@@ -381,7 +382,7 @@ section.content.active {
 .top {
     height: 15vh;
     display: flex;
-    width: 80%;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     padding: 0rem 1.5rem;
@@ -644,7 +645,7 @@ textarea::placeholder {
 
 .summary-container {
     height: 40vh;
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -736,7 +737,7 @@ textarea::placeholder {
 }
 
 .text-tools-wrapper {
-    width: 80%;
+    width: 100%;
     height: 12vh;
     padding: 0rem 1.5rem;
     display: flex;
@@ -834,7 +835,7 @@ textarea::placeholder {
 .task-container {
     height: 45vh;
     display: flex;
-    width: 80%;
+    width: 100%;
     align-items: start;
     flex-wrap: wrap;
     gap: 1rem;
@@ -852,6 +853,7 @@ textarea::placeholder {
     min-height: 35vh;
     height: fit-content;
     min-height: 35vh;
+    width: 32%;
     position: relative;
     border-radius: 1rem;
     display: flex;
@@ -1068,7 +1070,7 @@ textarea::placeholder {
     gap: 5rem;
 }
 
-.actions-wrapper>i:first-child {
+.actions-wrapper>i:last-child {
     height: 40px;
     width: 40px;
     display: flex;
@@ -1081,7 +1083,7 @@ textarea::placeholder {
     transition: all 300ms ease;
 }
 
-.actions-wrapper>i:first-child:hover {
+.actions-wrapper>i:last-child:hover {
     background: var(--danger);
     color: var(--text-main);
     box-shadow: 2px 2px 8px var(--danger);
@@ -1125,7 +1127,7 @@ textarea::placeholder {
     box-shadow: 2px 2px 8px var(--warning);
 }
 
-.actions-wrapper>i:last-child {
+.actions-wrapper>i:first-child {
     height: 40px;
     width: 40px;
     display: flex;
@@ -1138,7 +1140,7 @@ textarea::placeholder {
     transition: all 300ms ease;
 }
 
-.actions-wrapper>i:last-child:hover {
+.actions-wrapper>i:first-child:hover {
     background: var(--secondary);
     color: var(--text-main);
     box-shadow: 2px 2px 8px var(--secondary);
@@ -1294,7 +1296,7 @@ textarea::placeholder {
 }
 
 .executedtask-top h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     color: var(--text-main);
 }
 
@@ -1309,10 +1311,17 @@ textarea::placeholder {
     display: flex;
     padding: 1rem;
     gap: 1rem;
-    border: 2px solid red;
 }
 
-.archive-section {}
+.archive-section {
+
+}
+
+.task-info-wrapper + p{
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 4rem;
+}
 
 .archived-task-container {
     width: 100%;
@@ -1333,6 +1342,8 @@ textarea::placeholder {
     background: var(--card);
     justify-content: space-between;
     padding: 0rem 1rem;
+    display: flex;
+    align-items: center;
     border: 1px solid var(--border);
     border-radius: 0.7rem;
 }
@@ -1356,13 +1367,21 @@ textarea::placeholder {
 /* SETTINGS SECTION */
 
 section.settings-section {
-    padding: 2rem;
+    /* width: 79%; */
+    padding: 1rem;
     color: var(--text-main);
     background: var(--bg);
 }
 
 .settings-header {
+     width: 100%;
+     padding: 1rem;
+    height: fit-content;
+    box-shadow: 0 8px 25px var(--shadow);
     margin-bottom: 1.8rem;
+}
+.setting-card-wrapper{
+    padding: 1rem;
 }
 
 .settings-header h2 {
@@ -1382,6 +1401,7 @@ section.settings-section {
 
 .settings-card {
     padding: 1.5rem;
+    width: 100%;
     margin-bottom: 1.3rem;
     background: var(--card);
     border: 1px solid var(--border);
@@ -1438,9 +1458,7 @@ section.settings-section {
     color: white;
     font-size: 1.2rem;
     font-weight: 700;
-    background: linear-gradient(135deg,
-            var(--primary),
-            var(--primary-light));
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
 }
 
 .profile-preview h4 {
@@ -1488,7 +1506,9 @@ section.settings-section {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
 }
-
+.settings-field input:focus.error{
+    border-color: var(--danger);
+}
 .settings-save-btn {
     display: flex;
     align-items: center;
@@ -1639,294 +1659,6 @@ section.settings-section {
     min-height: 1.2rem;
 }
 
-/* RESPONSIVE */
-
-/* @media (max-width: 768px) {
-    section.settings-section {
-        padding: 1.2rem;
-    }
-
-    .settings-form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .settings-card {
-        padding: 1.1rem;
-    }
-}
-
-
-@media screen and (min-width: 1025px) {
-    aside {
-        width: 20%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        overflow-y: auto;
-    }
-
-    section {
-        margin-left: 20%;
-        width: 80%;
-        min-width: 0;
-    }
-
-    .home {
-        width: 100%;
-        padding: 25px;
-    }
-
-    .tasks {
-        width: 32%;
-        min-width: 220px;
-    }
-
-    .mobile-menu-btn {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    aside {
-        width: 260px;
-        max-width: 85%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        z-index: 1000;
-        overflow-y: auto;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-    }
-
-    aside.show-sidebar {
-        transform: translateX(0);
-    }
-
-    section {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .home {
-        width: 100%;
-        padding: 20px;
-    }
-
-    .top {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .intro-wrapper {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .mobile-menu-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        flex-shrink: 0;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 24px;
-        background: #01012C;
-        color: #ffffff;
-    }
-
-    .tasks-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .tasks {
-        width: calc(50% - 8px);
-        min-width: 0;
-    }
-
-    .task-info-wrapper,
-    .task-details-wrapper {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .add-input-container {
-        width: 100%;
-    }
-
-    input,
-    textarea,
-    select {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    .home {
-        padding: 14px;
-    }
-
-    .top {
-        gap: 10px;
-        align-items: flex-start;
-    }
-
-    .mobile-menu-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 22px;
-    }
-
-    .intro-wrapper {
-        flex: 1;
-    }
-
-    .intro-wrapper h1 {
-        font-size: 22px;
-        overflow-wrap: anywhere;
-    }
-
-    .intro-wrapper p {
-        font-size: 14px;
-    }
-
-    .tasks-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .tasks {
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-    }
-
-    .task-info-wrapper,
-    .task-details-wrapper,
-    .add-input-container,
-    .text-tools-wrapper {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .add-input-container {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .add-input-container input,
-    .add-input-container textarea,
-    .add-input-container button {
-        width: 100%;
-    }
-
-    .text-tools-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .search-wrapper {
-        width: 100%;
-    }
-
-    .search-wrapper input {
-        width: 100%;
-    }
-
-    .filter-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .filter-wrapper button,
-    .filter-wrapper select {
-        max-width: 100%;
-    }
-
-    .delete-dialog,
-    .modal,
-    .popup {
-        width: calc(100% - 30px);
-        max-width: 400px;
-        margin: 15px;
-    }
-
-    .task-actions {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    button {
-        cursor: pointer;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .home {
-        padding: 10px;
-    }
-
-    .intro-wrapper h1 {
-        font-size: 19px;
-    }
-
-    .intro-wrapper p {
-        font-size: 12px;
-    }
-
-    .tasks {
-        padding: 12px;
-    }
-
-    .tasks h3 {
-        font-size: 16px;
-        overflow-wrap: anywhere;
-    }
-
-    .tasks p {
-        font-size: 13px;
-        overflow-wrap: anywhere;
-    }
-
-    .mobile-menu-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-    }
-}
-
-@media screen and (min-width: 1025px) {
-    .mobile-menu-btn {
-        display: none;
-    }
-
-    .cheer-animation,
-    .cheer-content,
-    .success-icon {
-        animation: none;
-        transition: none;
-    }
-
-    .confetti {
-        animation-duration: 0.01ms;
-    }
-} */
-
-/* ========== RESPONSIVE - NO CLASS NAME CHANGED ========== */
 
 /* Tablet 1024px */
 @media (max-width: 1024px) {

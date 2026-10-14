@@ -29,13 +29,13 @@ closeBtn.addEventListener("click", () => aside.classList.remove("show-aside"));
 const navLinks = document.querySelectorAll(".nav-wrapper a");
 
 navLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    aside.classList.remove("show-aside");
-  });
+    link.addEventListener("click", () => {
+        aside.classList.remove("show-aside");
+    });
 });
 
 closeBtn.addEventListener("click", () => {
-  aside.classList.remove("show-aside");
+    aside.classList.remove("show-aside");
 });
 // executed animation
 
@@ -72,6 +72,7 @@ function showCheerAnimation() {
     }, 3000);
 }
 
+document.querySelector(".done").addEventListener("click", showCheerAnimation)
 
 // side bar nav
 
@@ -112,9 +113,9 @@ const storeduser = localStorage.getItem("user");
 
 const user = JSON.parse(storeduser);
 
-const profilePics = document.querySelector(".pics-wrapper");
 let profileName = document.querySelector(".profile-details > h3");
 let profileEmail = document.querySelector(".profile-details > p");
+
 profileName.textContent = user.fullName;
 profileEmail.textContent = user.email;
 
@@ -333,6 +334,8 @@ addTaskBtn.addEventListener("click", () => {
         const eachTaskContainer = document.createElement("div");
         eachTaskContainer.className = "tasks"
 
+        eachTaskContainer.dataset.createdAt = new Date().toISOString();
+
         allTaskContainer.appendChild(eachTaskContainer);
 
 
@@ -362,9 +365,18 @@ addTaskBtn.addEventListener("click", () => {
         function updateTaskCount() {
 
             totltasknum.forEach((total) => {
-                total.textContent = allTaskContainer.querySelectorAll(".tasks").length + archivecontainer.children.length;
+                total.textContent = allTaskContainer.querySelectorAll(".tasks").length + archivecontainer.querySelectorAll(".archive").length + executedcontainer.querySelectorAll(".executed-task").length;
             })
         }
+
+        function completedTask() {
+            const totalExecuted =
+                executedcontainer.querySelectorAll(".executed-task").length;
+            executedTaskCount.forEach((completed) => {
+                completed.textContent = totalExecuted;
+            })
+        }
+
 
         function updatependingCount() {
             pendingTask.textContent =
@@ -386,9 +398,9 @@ addTaskBtn.addEventListener("click", () => {
         });
 
 
-        const executed = document.querySelector(".actions-wrapper > i:last-child");
+        const executed = document.querySelector(".actions-wrapper > i:first-child");
         const edit = document.querySelector(".actions-wrapper > i:nth-child(2)")
-        const trash = document.querySelector(".actions-wrapper > i:first-child")
+        const trash = document.querySelector(".actions-wrapper > i:last-child")
         // const exscutedTask = document.querySelector(".executed");
         const archivedtasks = document.querySelector(".actions-wrapper > i:nth-child(3)");
 
@@ -428,25 +440,182 @@ addTaskBtn.addEventListener("click", () => {
         // });
 
 
+        // executed.addEventListener("click", () => {
+        //     if (!selectedTask) {
+
+        //         return;
+        //     }
+
+        //     const taskToExecute = selectedTask;
+
+        //     if (!taskToExecute.querySelector(".checkwrapper")) {
+        //         const checkwrapper = document.createElement("div");
+        //         checkwrapper.className = "checkwrapper";
+
+        //         const checked = document.createElement("p");
+        //         checked.className = "completed";
+        //         checked.innerHTML = '<i class="bi bi-check2"></i> Completed';
+
+        //         checkwrapper.appendChild(checked);
+        //         taskToExecute.appendChild(checkwrapper);
+        //         taskToExecute.classList.remove("pending");
+        //         taskToExecute.classList.add("executed-task");
+        //         const removetskplaceolder = document.querySelector(".executed-section .task-info-wrapper + p").style.display = "none";
+        //         executedcontainer.appendChild(taskToExecute);
+
+        //         showCheerAnimation();
+
+        //         updatependingCount();
+
+        //         taskinfo.classList.remove("view-task-info");
+
+        //         tskCurstatus.textContent = "Executed";
+        //         tskCurstatus.style.color = "#00CEC9";
+        //         completedTask();
+        //         selectedTask.addEventListener("click", () => {
+        //             showExecutedtaskinfo();
+        //             tskCurstatus.textContent = "Executed";
+        //             tskCurstatus.style.color = "#3e1777";
+
+        //             eachTaskContainer.addEventListener("click", () => {
+        //                 arctaskInfo.classList.remove("view-task-info");
+        //                 extaskInfo.classList.remove("view-task-info")
+        //                 taskinfo.classList.add("view-task-info")
+
+
+        //             })
+        //         });
+
+        //         const exttaskinfo = document.querySelector(".executed-section .task-info-wrapper");
+        //         const extremovetaskInfo = document.querySelector(".executed-section .task-info-wrapper > p");
+        //         const exttskCurName = document.querySelector(".executed-section .task-name-wrapper > p")
+        //         const exttskCurdesc = document.querySelector(".executed-section .task-desc-wrapper > p");
+        //         const exttskCurstatus = document.querySelector(".executed-section .task-status-wrapper > p")
+        //         const exttskCurtime = document.querySelector(".executed-section .task-time-wrapper > p");
+
+        //         function showExecutedtaskinfo() {
+        //             taskinfo.classList.remove("view-task-info");
+        //             exttaskinfo.classList.add("view-task-info");
+        //             exttskCurName.textContent = taskHeading.textContent;
+        //             exttskCurdesc.textContent = taskpara.textContent;
+        //             exttskCurstatus.textContent = "Executed";
+        //             exttskCurstatus.style.color = "#22D3EE";
+        //             exttskCurtime.textContent = tskCurtime.textContent;
+
+        //             extremovetaskInfo.
+        //                 addEventListener("click", () => {
+        //                     exttaskinfo.classList.remove("view-task-info");
+        //                 });
+        //             const undobtn = document.querySelector(".executed-section .actions-wrapper");
+
+        //             const icon = document.createElement("i");
+        //             icon.className = "bi-arrow-counterclockwise";
+        //             undobtn.replaceChildren(icon)
+
+        //             icon.addEventListener("click", () => {
+        //                 taskToExecute.removeChild(checkwrapper);
+        //                 taskToExecute.classList.add("pending");
+        //                 taskToExecute.classList.remove("executed-task");
+
+        //                 exttaskinfo.classList.remove("view-task-info");
+        //                 allTaskContainer.appendChild(taskToExecute)
+        //                 taskToExecute.classList.remove("executed-task");
+
+        //                 taskinfo.classList.remove("view-task-info");
+
+        //                 completedTask();
+        //                 updatependingCount();
+
+        //                 selectedTask = null;
+        //             })
+
+        //             allTaskContainer.append(selectedTask);
+        //             updatearchiveCount();
+
+        //             welcomewrapper.classList.add("show-msg");
+        //             welcomeText.textContent = "Task undone";
+        //             setTimeout(() => {
+        //                 welcomewrapper.classList.remove("show-msg");
+        //             }, 2000);
+        //             eachTaskContainer.addEventListener("click", () => {
+        //                 showtaskinfo();
+        //             })
+
+        //             selectedTask = null;
+        //         }
+
+        //     }
+        //     selectedTask = null;
+        // });
+
+
+        const exttaskinfo = document.querySelector(
+            ".executed-section .task-info-wrapper"
+        );
+        const extremovetaskInfo = document.querySelector(
+            ".executed-section .task-info-wrapper > p"
+        );
+        const exttskCurName = document.querySelector(
+            ".executed-section .task-name-wrapper > p"
+        );
+        const exttskCurdesc = document.querySelector(
+            ".executed-section .task-desc-wrapper > p"
+        );
+        const exttskCurstatus = document.querySelector(
+            ".executed-section .task-status-wrapper > p"
+        );
+        const exttskCurtime = document.querySelector(
+            ".executed-section .task-time-wrapper > p"
+        );
+        const undobtn = document.querySelector(
+            ".executed-section .actions-wrapper"
+        );
+
+        function showExecutedtaskinfo(task) {
+            selectedTask = task;
+
+            taskinfo.classList.remove("view-task-info");
+            exttaskinfo.classList.add("view-task-info");
+
+            exttskCurName.textContent =
+                task.querySelector(".task-header").textContent;
+
+            exttskCurdesc.textContent =
+                task.querySelector(".task-para").textContent;
+
+            exttskCurstatus.textContent = "Executed";
+            exttskCurstatus.style.color = "#22D3EE";
+
+            const taskTime = task.querySelector(".task-time");
+
+            exttskCurtime.textContent = taskTime
+                ? taskTime.textContent
+                : "";
+
+            const undoIcon = document.createElement("i");
+            undoIcon.className = "bi bi-arrow-counterclockwise";
+
+            undobtn.replaceChildren(undoIcon);
+        }
+
         executed.addEventListener("click", () => {
-            if (!selectedTask) {
-                console.log("No task has been selected");
-                return;
-            }
+            if (!selectedTask) return;
 
             const taskToExecute = selectedTask;
 
-            if (!taskToExecute.querySelector(".checkwrapper")) {
-                const checkwrapper = document.createElement("div");
-                checkwrapper.className = "checkwrapper";
-
-                const checked = document.createElement("p");
-                checked.className = "completed";
-                checked.innerHTML = '<i class="bi bi-check2"></i> Completed';
-
-                checkwrapper.appendChild(checked);
-                taskToExecute.appendChild(checkwrapper);
+            if (taskToExecute.classList.contains("executed-task")) {
+                return;
             }
+
+            const checkwrapper = document.createElement("div");
+            checkwrapper.className = "checkwrapper";
+
+            const checked = document.createElement("p");
+            checked.className = "completed";
+            checked.innerHTML = '<i class="bi bi-check2"></i> Completed';
+
+            checkwrapper.appendChild(checked);
+            taskToExecute.appendChild(checkwrapper);
 
             taskToExecute.classList.remove("pending");
             taskToExecute.classList.add("executed-task");
@@ -455,22 +624,56 @@ addTaskBtn.addEventListener("click", () => {
 
             showCheerAnimation();
 
-            updatependingCount();
-
             taskinfo.classList.remove("view-task-info");
 
-            tskCurstatus.textContent = "Executed";
-            tskCurstatus.style.color = "#00CEC9";
-
-            const totalExecuted =
-                executedcontainer.querySelectorAll(".executed-task").length;
-
-            executedTaskCount.forEach((completed) => {
-                completed.textContent = totalExecuted;
-            });
+            completedTask();
+            updatependingCount();
 
             selectedTask = null;
         });
+
+        executedcontainer.addEventListener("click", (event) => {
+            const task = event.target.closest(".executed-task");
+
+            if (!task || !executedcontainer.contains(task)) return;
+
+            showExecutedtaskinfo(task);
+        });
+
+        extremovetaskInfo.addEventListener("click", () => {
+            exttaskinfo.classList.remove("view-task-info");
+        });
+
+        undobtn.addEventListener("click", () => {
+            if (!selectedTask) return;
+
+            const taskToUndo = selectedTask;
+            const checkwrapper = taskToUndo.querySelector(".checkwrapper");
+
+            if (checkwrapper) {
+                checkwrapper.remove();
+            }
+
+            taskToUndo.classList.remove("executed-task");
+            taskToUndo.classList.add("pending");
+
+            allTaskContainer.appendChild(taskToUndo);
+
+            exttaskinfo.classList.remove("view-task-info");
+
+            completedTask();
+            updatependingCount();
+
+            selectedTask = null;
+
+            welcomewrapper.classList.add("show-msg");
+            welcomeText.textContent = "Task undone";
+
+            setTimeout(() => {
+                welcomewrapper.classList.remove("show-msg");
+            }, 2000);
+        });
+
 
         archivedtasks.addEventListener("click", () => {
             taskinfo.classList.remove("view-task-info");
@@ -482,20 +685,18 @@ addTaskBtn.addEventListener("click", () => {
             }, 2000);
             if (selectedTask) {
                 allTaskContainer.removeChild(selectedTask);
-                selectedTask.classList.add("archive");
+                selectedTask.classList.add("archive"); const removetskplaceolder = document.querySelector(".archive-section .task-info-wrapper + p").style.display = "none";
                 archivecontainer.append(selectedTask);
                 taskinfo.classList.remove("view-task-info");
-                updateTaskCount();
                 updatependingCount();
                 updatearchiveCount();
+                updateTaskCount();
                 selectedTask.addEventListener("click", () => {
                     showarchivetaskinfo();
-                    tskCurstatus.textContent = "Executed";
-                    tskCurstatus.style.color = "#3e1777";
                 });
 
                 selectedTask = null;
-                // showing archive Task info 
+
                 const arctaskinfo = document.querySelector(".archive-section .task-info-wrapper");
                 const arcremovetaskInfo = document.querySelector(".archive-section .task-info-wrapper > p");
                 const arctskCurName = document.querySelector(".archive-section .task-name-wrapper > p")
@@ -513,13 +714,16 @@ addTaskBtn.addEventListener("click", () => {
                     arctskCurstatus.style.color = "#FDCB6E";
                     arctskCurtime.textContent = tskCurtime.textContent;
                     const restorebtn = document.querySelector(".archive-actions-wrapper");
-                    restorebtn.innerHTML = `<i class="bi bi-arrow-clockwise"></i>`;
+
+                    const icon = document.createElement("i");
+                    icon.className = "bi-arrow-counterclockwise";
+                    restorebtn.replaceChildren(icon)
 
                     arcremovetaskInfo.addEventListener("click", () => {
                         arctaskinfo.classList.remove("view-task-info");
                     });
 
-                    restorebtn.addEventListener("click", () => {
+                    icon.addEventListener("click", () => {
                         arctaskinfo.classList.remove("view-task-info");
 
                         archivecontainer.removeChild(selectedTask)
@@ -537,9 +741,9 @@ addTaskBtn.addEventListener("click", () => {
 
                 }
                 arctaskinfo.classList.remove("view-task-info");
+
+                selectedTask = null;
             }
-
-
 
 
         })
@@ -615,17 +819,12 @@ addTaskBtn.addEventListener("click", () => {
 
 
 
-
-        // const activetask = document.createElement("div");
-        // activetask.className = "active-task";
-        // const check = document.createElement("i");
-        // check.className = "bi bi-check";
     };
 });
 
 
 
-// searching task
+// searching task all task
 
 const search = document.querySelector("#search");
 
@@ -647,14 +846,143 @@ search.addEventListener("input", () => {
     });
 });
 
+// search executed task
 
+const extsearch = document.querySelector(".executed-section #search");
+
+extsearch.addEventListener("input", () => {
+
+    const searchValue = extsearch.value.toLowerCase().trim();
+    const allTask = executedcontainer.querySelectorAll(".executed-task");
+
+    allTask.forEach((task) => {
+        const taskName = task.querySelector(".task-header").textContent.toLocaleLowerCase();
+        const taskdesc = task.querySelector(".task-para").textContent.toLocaleLowerCase();
+
+        if (taskName.includes(searchValue) || taskdesc.includes(searchValue)) {
+            task.style.display = "";
+        }
+        else {
+            task.style.display = "none";
+        };
+    });
+});
+
+// search archive task
+
+const archivesearch = document.querySelector(".archive-section #search");
+
+
+archivesearch.addEventListener("input", () => {
+
+    const searchValue = archivesearch.value.toLowerCase().trim();
+    const allTask = archivecontainer.querySelectorAll(".archive");
+
+    allTask.forEach((task) => {
+        const taskName = task.querySelector(".task-header").textContent.toLocaleLowerCase();
+        const taskdesc = task.querySelector(".task-para").textContent.toLocaleLowerCase();
+
+        if (taskName.includes(searchValue) || taskdesc.includes(searchValue)) {
+            task.style.display = "";
+        }
+        else {
+            task.style.display = "none";
+        };
+    });
+});
+
+
+// filtering task
+
+const periodLinks = document.querySelectorAll("[data-period]");
+
+const periodTitle = document.querySelector(
+    ".tools-wrapper .dropdown:nth-child(2) .dropdown-btn"
+);
+
+let selectedPeriod = "all";
+
+function checkTaskDate(taskDate, period) {
+    if (period === "all") return true;
+
+    if (!taskDate || Number.isNaN(taskDate.getTime())) {
+        return false;
+    }
+
+    const now = new Date();
+    const today = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate()
+    );
+
+    const day = today.getDay();
+    const mondayOffset = day === 0 ? 6 : day - 1;
+
+    const thisMonday = new Date(today);
+    thisMonday.setDate(today.getDate() - mondayOffset);
+
+    const lastMonday = new Date(thisMonday);
+    lastMonday.setDate(thisMonday.getDate() - 7);
+
+    const nextMonday = new Date(thisMonday);
+    nextMonday.setDate(thisMonday.getDate() + 7);
+
+    const lastWeekEnd = new Date(thisMonday);
+
+    const lastMonth = new Date(today);
+    lastMonth.setMonth(lastMonth.getMonth() - 1);
+
+    const lastThreeMonths = new Date(today);
+    lastThreeMonths.setMonth(lastThreeMonths.getMonth() - 3);
+
+    const lastYear = new Date(today);
+    lastYear.setFullYear(lastYear.getFullYear() - 1);
+
+    switch (period) {
+        case "this-week":
+            return taskDate >= thisMonday && taskDate < nextMonday;
+
+        case "last-week":
+            return taskDate >= lastMonday && taskDate < thisMonday;
+
+        case "last-month":
+            return taskDate >= lastMonth && taskDate <= now;
+
+        case "last-3-months":
+            return taskDate >= lastThreeMonths && taskDate <= now;
+
+        case "last-year":
+            return taskDate >= lastYear && taskDate <= now;
+
+        default:
+            return true;
+    }
+}
+
+
+// Recent dropdown
+periodLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        selectedPeriod = link.dataset.period;
+
+        periodTitle.innerHTML =
+            `${link.textContent} <i class="bi bi-chevron-down"></i>`;
+
+        link.closest("details").removeAttribute("open");
+
+        filterTasks();
+    });
+});
 
 
 const settingsName = document.querySelector("#settingsName");
 const settingsEmail = document.querySelector("#settingsEmail");
 const profilePreviewName = document.querySelector("#profilePreviewName");
 const profilePreviewEmail = document.querySelector("#profilePreviewEmail");
-const profileAvatar = document.querySelector("#profileAvatar");
+const profileAvatar = document.querySelectorAll("#profileAvatar");
 const darkThemeToggle = document.querySelector("#darkThemeToggle");
 const saveProfile = document.querySelector("#saveProfile");
 const settingsFeedback = document.querySelector("#settingsFeedback");
@@ -662,30 +990,53 @@ const accentColors = document.querySelectorAll(".accent-color");
 const logoutBtn = document.querySelector("#logoutBtn");
 
 // Load saved profile
-settingsName.value = localStorage.getItem("settingsName") || "";
-settingsEmail.value = localStorage.getItem("settingsEmail") || "";
+settingsName.value = user.fullName;
+settingsEmail.value = user.email;
 
 function updateProfilePreview() {
     const name = settingsName.value.trim() || "Your Name";
-    const email = settingsEmail.value.trim() || "your@email.com";
+    const email = settingsEmail.value.trim() || "your@gmail.com";
 
+    profileName.textContent = name;
+    profileEmail.textContent = email;
     profilePreviewName.textContent = name;
     profilePreviewEmail.textContent = email;
-    profileAvatar.textContent = name.charAt(0).toUpperCase();
-}
+    profileAvatar.forEach(profile => profile.textContent = name.charAt(0).toUpperCase());
 
+}
 updateProfilePreview();
 
-settingsName.addEventListener("input", updateProfilePreview);
-settingsEmail.addEventListener("input", updateProfilePreview);
+settingsName.addEventListener("input", () => {
+    updateProfilePreview();
+});
+
+
 
 // Save profile
 saveProfile.addEventListener("click", () => {
-    localStorage.setItem("settingsName", settingsName.value.trim());
-    localStorage.setItem("settingsEmail", settingsEmail.value.trim());
+    settingsEmail.addEventListener("input", () => {
+        isValid = true;
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!gmailRegex.test(settingsEmail.value)) {
+            settingsEmail.classList.add("error");
+            // emailMessage.textContent =
+            //     "Email must end with @gmail.com.";
+            // emailMessage.className =
+            //     "email-message email-error-message";
+            isValid = false;
+        }
+        else {
 
-    updateProfilePreview();
-    settingsFeedback.textContent = "Profile saved successfully!";
+            settingsEmail.classList.remove("error");
+            updateProfilePreview();
+            localStorage.setItem("settingsName", settingsName.value.trim());
+            localStorage.setItem("settingsEmail", settingsEmail.value.trim());
+
+            updateProfilePreview();
+            isValid = true;
+        }
+    });
+
 });
 
 // Load saved theme and accent color
@@ -754,7 +1105,7 @@ logoutBtn.addEventListener("click", () => {
 
     if (!confirmLogout) return;
 
-    // Change "user" to your actual authentication storage key if needed.
+
     localStorage.removeItem("user");
 
     window.location.href = "index.html";

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IdeasFlow Dashboard</title>
     <link rel="stylesheet" href="./dashboard.css">
+    <link rel="shortcut icon" href="./site-logo.png" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
@@ -41,7 +42,7 @@
 
         <aside>
             <div class="logo-wrapper">
-                <div class="logo-div"></div>
+                <div class="logo-div"><img src="./TasksFlow Checklist Logo.png" alt="site logo"></div>
                 <div class="site-name-wrapper">
                     <h2>TasksFlow</h2>
                     <p>Premium</p>
@@ -50,7 +51,7 @@
             </div>
 
             <div class="profile-wrapper">
-                <div class="pics-wrapper"><i class="bi bi-person-fill"></i></div>
+                 <div class="profile-avatar" id="profileAvatar"></div>
                 <div class="profile-details">
                     <h3></h3>
                     <p></p>
@@ -61,13 +62,13 @@
             <div class="nav-wrapper">
                 <a href="#" class="active" data-id="home"><i class="bi bi-lightbulb"></i><span>My Tasks</span><small
                         class="totltasknum">0</small></a>
-                <a href="#" class="" data-id="executed"><i class="bi bi-check2-circle"></i><span>Executed</span><small
+                <a href="#" class="done" data-id="executed"><i class="bi bi-check2-circle"></i><span>Executed</span><small
                         class="executed">0</small></a>
                 <a href="#" data-id="archive"><i class="bi bi-archive"></i><span>Archive</span><small
                         class="archive">0</small></a>
 
                 <a href="#" data-id="setting"><i class="bi bi-gear"></i><span>Setting</span></a>
-                <a onclick="showlogin()" href="#" data-id="logout"><i class="bi bi-box-arrow-left"></i><span>Logout</span></a>
+                <a href="#" data-id="logout"><i class="bi bi-box-arrow-left"></i><span>Logout</span></a>
             </div>
         </aside>
 
@@ -136,23 +137,13 @@
             <div class="text-tools-wrapper">
                 <div class="text">
                     <h2>You Task</h2>
-                    <p>Tall task</p>
+                    <p>See all your visible and pending task</p>
                 </div>
 
                 <div class="tools-wrapper">
 
 
-                    <details class="dropdown">
-                        <summary class="dropdown-btn">
-                            All Status <i class="bi bi-chevron-down"></i>
-                        </summary>
 
-                        <div class="dropdown-menu">
-                            <a href="#" data-status="all">All Tasks</a>
-                            <a href="#" data-status="executed">Executed</a>
-                            <a href="#" data-status="pending">Pending</a>
-                        </div>
-                    </details>
 
                     <details class="dropdown">
                         <summary class="dropdown-btn">
@@ -179,6 +170,7 @@
             </div>
 
             <div class="task-container main-container">
+
                 <p class="task-container-placeholder">No task added. click on the add task button to add tasks</p>
 
                 <article class="task-info-wrapper">
@@ -265,10 +257,9 @@
                         <i class="bi bi-trash"></i>
                     </div>
                 </div>
-
-
             </article>
 
+            <p>No executed task</p>
         </section>
 
         <!-- lottis -->
@@ -285,6 +276,7 @@
                 </div>
                 </div>
             <div class="archived-task-container"></div>
+
             <article class="task-info-wrapper">
                 <p>&times;</p>
                 <div class="task-info-container">
@@ -317,10 +309,7 @@
 
 
             </article>
-        </section>
-
-        <section class="content analytics" id="analytics">
-            ergergreg
+            <p>No archive task</p>
         </section>
 
         
@@ -334,6 +323,7 @@
     </div>
 
     <!-- Profile Settings -->
+     <div class="setting-card-wrapper">
     <div class="settings-card">
 
         <div class="settings-card-heading">
@@ -463,6 +453,7 @@
 
     <p class="settings-feedback" id="settingsFeedback"
         role="status" aria-live="polite"></p>
+        </div>
 
 </section>
 
