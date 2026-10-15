@@ -81,6 +81,7 @@ main {
 }
 
 .show-msg {
+    position: fixed;
     top: 2rem;
 }
 
@@ -1756,11 +1757,18 @@ section.settings-section {
     .search-input-wrapper {
         width: 65%;
     }
+ .article{
+        top: 0;
+        z-index: 50;
+     }
 
     .search-add-container button {
         width: 32%;
     }
 
+    .view-task-info{
+        z-index: 50;
+    }
     .summary-container {
         flex-direction: column;
         height: auto;
@@ -1879,6 +1887,9 @@ section.settings-section {
         padding: 0;
         justify-content: center;
         gap: 0.5rem;
+     }
+     .article{
+        top: 0;
      }
 
     .profile-avatar{
