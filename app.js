@@ -173,7 +173,7 @@ signUpForm.addEventListener("submit", function (event) {
         passwordError.classList.add("error");
 
         passwordStrength.textContent = "Password is required.";
-        
+
         passwordStrength.className = "password-strength password-weak";
         isValid = false;
     }
@@ -222,7 +222,21 @@ signUpForm.addEventListener("submit", function (event) {
     const userJSON = JSON.stringify(user);
     localStorage.setItem("user", userJSON);
 
-    alert("Registration Successful!");
+    function sucessMsg() {
+
+        const welcomewrapper = document.querySelector(".welcome-msg-wrapper");
+        const welcomeText = document.querySelector(".welcome-msg-wrapper p");
+        welcomewrapper.classList.add("show-msg");
+
+        welcomeText.textContent = "Register Successful !"
+
+        setTimeout(()=>{
+
+        welcomewrapper.classList.remove("show-msg");
+            
+    showlogin();
+        }, 2000)
+    }
 
     signUpForm.reset();
 
@@ -232,8 +246,8 @@ signUpForm.addEventListener("submit", function (event) {
 
     signupNameMessage.textContent = "";
 
-    showlogin();
 
+    sucessMsg();
 });
 
 // loginForm validation
@@ -321,18 +335,18 @@ loginForm.addEventListener("submit", function (event) {
         loginPasswordError.classList.remove("error");
         loader.classList.add("show-loader");
         document.querySelector(".login-text").style.display = "none";
-            
 
-         localStorage.setItem(
+
+        localStorage.setItem(
             "isLoggedIn",
             "true"
         );
-        
+
         window.location.href = "dashboard.html";
     }
 
 });
-    
+
 
 
 loginEmail.addEventListener("input", function () {

@@ -116,8 +116,8 @@ const user = JSON.parse(storeduser);
 let profileName = document.querySelector(".profile-details > h3");
 let profileEmail = document.querySelector(".profile-details > p");
 
-profileName.textContent = user.fullName;
-profileEmail.textContent = user.email;
+profileName.textContent = user.fullName || "YourName";
+profileEmail.textContent = user.email || "youremail@gmail.com";
 
 
 // welcome user message
@@ -1112,20 +1112,12 @@ logoutBtn.addEventListener("click", () => {
 });
 
 
+// side bar log out btn
+
+function logout() {
+    localStorage.removeItem("user");
+
+    window.location.href = "index.html"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

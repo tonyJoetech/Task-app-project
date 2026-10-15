@@ -51,7 +51,7 @@
             </div>
 
             <div class="profile-wrapper">
-                 <div class="profile-avatar" id="profileAvatar"></div>
+                <div class="profile-avatar" id="profileAvatar"></div>
                 <div class="profile-details">
                     <h3></h3>
                     <p></p>
@@ -62,13 +62,14 @@
             <div class="nav-wrapper">
                 <a href="#" class="active" data-id="home"><i class="bi bi-lightbulb"></i><span>My Tasks</span><small
                         class="totltasknum">0</small></a>
-                <a href="#" class="done" data-id="executed"><i class="bi bi-check2-circle"></i><span>Executed</span><small
-                        class="executed">0</small></a>
+                <a href="#" class="done" data-id="executed"><i
+                        class="bi bi-check2-circle"></i><span>Executed</span><small class="executed">0</small></a>
                 <a href="#" data-id="archive"><i class="bi bi-archive"></i><span>Archive</span><small
                         class="archive">0</small></a>
 
                 <a href="#" data-id="setting"><i class="bi bi-gear"></i><span>Setting</span></a>
-                <a href="#" data-id="logout"><i class="bi bi-box-arrow-left"></i><span>Logout</span></a>
+                <a onclick="logout()" href="#" class="log-out"><i
+                        class="bi bi-box-arrow-left"></i><span>Logout</span></a>
             </div>
         </aside>
 
@@ -223,7 +224,8 @@
                 </div>
 
                 <div class="search-wrapper">
-                    <i class="bi bi-search"></i><input type="search" name="search" id="search" placeholder="search executed task" class="search-executed-task">
+                    <i class="bi bi-search"></i><input type="search" name="search" id="search"
+                        placeholder="search executed task" class="search-executed-task">
                 </div>
             </div>
 
@@ -272,9 +274,10 @@
                 </div>
 
                 <div class="search-wrapper">
-                    <i class="bi bi-search"></i><input type="search" name="search" id="search" class="search-archive-task" placeholder="Search archive task">
+                    <i class="bi bi-search"></i><input type="search" name="search" id="search"
+                        class="search-archive-task" placeholder="Search archive task">
                 </div>
-                </div>
+            </div>
             <div class="archived-task-container"></div>
 
             <article class="task-info-wrapper">
@@ -312,155 +315,141 @@
             <p>No archive task</p>
         </section>
 
-        
-<section class="content settings-section" id="setting">
 
-    <div class="settings-header">
-        <div>
-            <h2>Settings</h2>
-            <p>Manage your profile and personalize your workspace.</p>
-        </div>
-    </div>
+        <section class="content settings-section" id="setting">
 
-    <!-- Profile Settings -->
-     <div class="setting-card-wrapper">
-    <div class="settings-card">
-
-        <div class="settings-card-heading">
-            <div class="settings-icon">
-                <i class="bi bi-person-circle"></i>
+            <div class="settings-header">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Manage your profile and personalize your workspace.</p>
+                </div>
             </div>
 
-            <div>
-                <h3>Profile Settings</h3>
-                <p>Update your personal information.</p>
+            <!-- Profile Settings -->
+            <div class="setting-card-wrapper">
+                <div class="settings-card">
+
+                    <div class="settings-card-heading">
+                        <div class="settings-icon">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+
+                        <div>
+                            <h3>Profile Settings</h3>
+                            <p>Update your personal information.</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-preview">
+                        <div class="profile-avatar" id="profileAvatar">U</div>
+
+                        <div>
+                            <h4 id="profilePreviewName">Your Name</h4>
+                            <p id="profilePreviewEmail">your@email.com</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-form-grid">
+
+                        <div class="settings-field">
+                            <label for="settingsName">Full Name</label>
+                            <input type="text" id="settingsName" placeholder="Enter your full name">
+                        </div>
+
+                        <div class="settings-field">
+                            <label for="settingsEmail">Email Address</label>
+                            <input type="email" id="settingsEmail" placeholder="Enter your email">
+                        </div>
+
+                    </div>
+
+                    <button class="settings-save-btn" id="saveProfile">
+                        <i class="bi bi-check2-circle"></i>
+                        Save Profile
+                    </button>
+
+                </div>
+
+                <!-- Theme Settings -->
+                <div class="settings-card">
+
+                    <div class="settings-card-heading">
+                        <div class="settings-icon teal-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+
+                        <div>
+                            <h3>Appearance</h3>
+                            <p>Customize the look of your dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-option">
+                        <div>
+                            <h4>Dark Mode</h4>
+                            <p>Switch between dark and light themes.</p>
+                        </div>
+
+                        <label class="settings-switch">
+                            <input type="checkbox" id="darkThemeToggle" checked>
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="theme-color-section">
+                        <h4>Accent Color</h4>
+                        <p>Choose your preferred theme color.</p>
+
+                        <div class="accent-options">
+
+                            <button class="accent-color active" style="--accent: #6C5CE7" data-color="#6C5CE7"
+                                aria-label="Purple"></button>
+
+                            <button class="accent-color" style="--accent: #00CEC9" data-color="#00CEC9"
+                                aria-label="Teal"></button>
+
+                            <button class="accent-color" style="--accent: #FD79A8" data-color="#FD79A8"
+                                aria-label="Pink"></button>
+
+                            <button class="accent-color" style="--accent: #74B9FF" data-color="#74B9FF"
+                                aria-label="Blue"></button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Log Out -->
+                <div class="settings-card logout-card">
+
+                    <div class="settings-card-heading">
+                        <div class="settings-icon logout-icon">
+                            <i class="bi bi-box-arrow-right"></i>
+                        </div>
+
+                        <div>
+                            <h3>Log Out</h3>
+                            <p>Sign out of your TasksFlow account.</p>
+                        </div>
+                    </div>
+
+                    <div class="logout-content">
+                        <p>You will need to sign in again to access your dashboard.</p>
+
+                        <button class="logout-btn" id="logoutBtn">
+                            <i class="bi bi-box-arrow-right"></i>
+                            Log Out
+                        </button>
+                    </div>
+
+                </div>
+
+                <p class="settings-feedback" id="settingsFeedback" role="status" aria-live="polite"></p>
             </div>
-        </div>
 
-        <div class="profile-preview">
-            <div class="profile-avatar" id="profileAvatar">U</div>
-
-            <div>
-                <h4 id="profilePreviewName">Your Name</h4>
-                <p id="profilePreviewEmail">your@email.com</p>
-            </div>
-        </div>
-
-        <div class="settings-form-grid">
-
-            <div class="settings-field">
-                <label for="settingsName">Full Name</label>
-                <input type="text" id="settingsName"
-                    placeholder="Enter your full name">
-            </div>
-
-            <div class="settings-field">
-                <label for="settingsEmail">Email Address</label>
-                <input type="email" id="settingsEmail"
-                    placeholder="Enter your email">
-            </div>
-
-        </div>
-
-        <button class="settings-save-btn" id="saveProfile">
-            <i class="bi bi-check2-circle"></i>
-            Save Profile
-        </button>
-
-    </div>
-
-    <!-- Theme Settings -->
-    <div class="settings-card">
-
-        <div class="settings-card-heading">
-            <div class="settings-icon teal-icon">
-                <i class="bi bi-palette"></i>
-            </div>
-
-            <div>
-                <h3>Appearance</h3>
-                <p>Customize the look of your dashboard.</p>
-            </div>
-        </div>
-
-        <div class="setting-option">
-            <div>
-                <h4>Dark Mode</h4>
-                <p>Switch between dark and light themes.</p>
-            </div>
-
-            <label class="settings-switch">
-                <input type="checkbox" id="darkThemeToggle" checked>
-                <span class="switch-slider"></span>
-            </label>
-        </div>
-
-        <div class="theme-color-section">
-            <h4>Accent Color</h4>
-            <p>Choose your preferred theme color.</p>
-
-            <div class="accent-options">
-
-                <button class="accent-color active"
-                    style="--accent: #6C5CE7"
-                    data-color="#6C5CE7"
-                    aria-label="Purple"></button>
-
-                <button class="accent-color"
-                    style="--accent: #00CEC9"
-                    data-color="#00CEC9"
-                    aria-label="Teal"></button>
-
-                <button class="accent-color"
-                    style="--accent: #FD79A8"
-                    data-color="#FD79A8"
-                    aria-label="Pink"></button>
-
-                <button class="accent-color"
-                    style="--accent: #74B9FF"
-                    data-color="#74B9FF"
-                    aria-label="Blue"></button>
-
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Log Out -->
-    <div class="settings-card logout-card">
-
-        <div class="settings-card-heading">
-            <div class="settings-icon logout-icon">
-                <i class="bi bi-box-arrow-right"></i>
-            </div>
-
-            <div>
-                <h3>Log Out</h3>
-                <p>Sign out of your TasksFlow account.</p>
-            </div>
-        </div>
-
-        <div class="logout-content">
-            <p>You will need to sign in again to access your dashboard.</p>
-
-            <button class="logout-btn" id="logoutBtn">
-                <i class="bi bi-box-arrow-right"></i>
-                Log Out
-            </button>
-        </div>
-
-    </div>
-
-    <p class="settings-feedback" id="settingsFeedback"
-        role="status" aria-live="polite"></p>
-        </div>
-
-</section>
-
-
-        <section class="content logout" id="logout">
-            reagergrgg
         </section>
+
+
 
     </main>
     <script src="./dashboard.js"></script>
