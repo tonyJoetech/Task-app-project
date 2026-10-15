@@ -501,11 +501,18 @@ input {
 @media (max-width: 600px) {
 
     body {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     .login-auth-wrapper,
     .sign-up-auth-wrapper {
+        padding: 0.3rem 0.3rem;
+        width: 100%;
+    }
+    .login-form{
+        width: 100%;
+    }
+    .input-wrapper{
         width: 100%;
     }
 
