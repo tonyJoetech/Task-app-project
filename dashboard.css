@@ -1450,8 +1450,8 @@ section.settings-section {
 }
 
 .profile-avatar {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 50px;
+    height: 50px;
     display: grid;
     place-items: center;
     flex-shrink: 0;
@@ -1883,7 +1883,7 @@ section.settings-section {
     }
 
     .profile-wrapper {
-        height: 10vh;
+        height: 12vh;
         padding: 0;
         justify-content: center;
         gap: 0.5rem;
@@ -1892,10 +1892,7 @@ section.settings-section {
         top: 0;
      }
 
-    .profile-avatar{
-        height: 90%;
-        width: 18%;
-    }
+    
     .nav-wrapper {
         height: 60vh;
     }
